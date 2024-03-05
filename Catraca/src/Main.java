@@ -1,10 +1,10 @@
 import java.util.List;
 
-class Pessoa {
+class Pessoas {
     private String nome;
     private String cargo;
 
-    public Pessoa(String nome, String cargo) {
+    public Pessoas(String nome, String cargo) {
         this.nome = nome;
         this.cargo = cargo;
     }
@@ -18,8 +18,28 @@ class Pessoa {
     }
 }
 
+class Pessoa extends Pessoas {
+    public Pessoa(String nome, String cargo) {
+        super(nome, cargo);
+    }
+}
+
+abstract class FabricaDePessoas {
+     public abstract Pessoas criarPessoa(String nome, String cargo);
+
+}
+
+class FabricaDePessoa extends FabricaDePessoas{
+    @Override
+    public Pessoas criarPessoa(String nome, String cargo) {
+        return new Pessoa(nome, cargo);
+    }
+}
+
+
 class Catraca {
     private boolean catraca;
+    private int numPessoas;
 
     public Catraca() {
         this.catraca = true;
@@ -45,14 +65,14 @@ class Catraca {
             return false;
         }
     }
-}
 
-class Permissao {
-    public void permissao(String cargo) {
+    public boolean permissao(String cargo) {
         List<String> cargos = List.of("Gerente", "Supervisor", "Analista");
         String cargoVerificado = cargo;
         if (cargos.contains(cargoVerificado)) {
         }
+
+        return ;
     }
 }
 
